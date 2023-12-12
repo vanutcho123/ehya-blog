@@ -5,6 +5,7 @@ import { images } from "../../constants";
 import { Link } from "react-router-dom";
 import SuggestedPosts from "./components/SuggestedPosts";
 import CommentsContainer from "../../components/Comments/CommentsContainer";
+import SocialShareButtons from "../../components/SocialShareButtons";
 
 const breadCrumbsData = [
   {
@@ -104,12 +105,23 @@ const ArticleDetail = () => {
             logginedUserId={"a"}
           />
         </article>
-        <SuggestedPosts
-          header={"Latest Article"}
-          posts={postData}
-          tags={tagsData}
-          className="mt-8 lg:mt-0 lg:max-w-xs"
-        />
+        <div>
+          <SuggestedPosts
+            header={"Latest Article"}
+            posts={postData}
+            tags={tagsData}
+            className="mt-8 lg:mt-0 lg:max-w-xs"
+          />
+          <div className="mt-7">
+            <h2 className="font-roboto font-medium text-dark-hard mb-4 md:text-xl">
+              Share on:
+            </h2>
+            <SocialShareButtons
+              url="https://github.com/mohammadrz003/moonfo-youtube/blob/mern-stack-blog-frontend/src/pages/articleDetail/ArticleDetailPage.jsx"
+              title="Hello mọi người"
+            />
+          </div>
+        </div>
       </section>
     </MainLayout>
   );
