@@ -98,7 +98,11 @@ const ArticleDetail = () => {
               faucibus et molestie ac feugiat sed lectus vestibulum.
             </p>
           </div>
-          <CommentsContainer className="mt-10" comments={commentData} />
+          <CommentsContainer
+            className="mt-10"
+            comments={commentData}
+            logginedUserId={"a"}
+          />
         </article>
         <SuggestedPosts
           header={"Latest Article"}
