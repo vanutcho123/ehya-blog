@@ -18,7 +18,7 @@ const Footer = () => {
           <h3 className="text-dark-light font-bold md:text-lg">Product</h3>
           <ul className="text-[#959EAD] text-sm mt-5 space-y-4 md:text-base">
             <li>
-              <a href="/">Landing Page</a>
+              <a href="/">Landingpage</a>
             </li>
             <li>
               <a href="/">Features</a>
@@ -87,7 +87,7 @@ const Footer = () => {
         </div>
         <div className="col-span-10 md:order-first md:col-span-4 lg:col-span-2">
           <img
-            src={images.logo}
+            src={images.Logo}
             alt="logo"
             className="brightness-0 invert mx-auto md:mx-0"
           />
@@ -127,7 +127,7 @@ const Footer = () => {
             <AiFillHeart className="w-7 h-auto" />
           </div>
           <p className="font-bold italic text-dark-light">
-            Copyright © 2023. JackiesNguyen with love.
+            Copyright © 2023. Crafted with love.
           </p>
         </div>
       </footer>

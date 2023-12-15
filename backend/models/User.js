@@ -2,7 +2,6 @@ import { Schema, model } from "mongoose";
 import { hash, compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
-// Định nghĩa cho đối tượng người dùng
 const UserSchema = new Schema(
   {
     avatar: { type: String, default: "" },
@@ -16,7 +15,6 @@ const UserSchema = new Schema(
   { timestamps: true }
 );
 
-// Trước khi lưu vào cơ sở dữ liệu, kiểm tra xem mật khẩu có được thay đổi không
 UserSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     this.password = await hash(this.password, 10);

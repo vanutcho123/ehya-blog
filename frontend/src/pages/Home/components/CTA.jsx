@@ -33,7 +33,7 @@ const CTA = () => {
                 className="px-4 py-3 rounded-lg w-full placeholder:text-dark-light"
                 placeholder="Your Email"
               />
-              <button className="px-4 py-3 rounded-lg w-full bg-primary text-white font-bold md:w-fit md:whitespace-nowrap">
+              <button className="px-4 py-3 rounded-lg w-full bg-primary text-white font-bold md:w-fit md:whitespace-nowrap hover:opacity-80">
                 Get started
               </button>
             </div>

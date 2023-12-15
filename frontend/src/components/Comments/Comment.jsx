@@ -1,6 +1,7 @@
 import React from "react";
 import { FiMessageSquare, FiEdit2, FiTrash } from "react-icons/fi";
-import { images } from "../../constants";
+
+import { images, stables } from "../../constants";
 import CommentForm from "./CommentForm";
 
 const Comment = ({
@@ -14,24 +15,28 @@ const Comment = ({
   deleteComment,
   replies,
 }) => {
-  const isLoggedUserId = Boolean(logginedUserId);
+  const isUserLoggined = Boolean(logginedUserId);
   const commentBelongsToUser = logginedUserId === comment.user._id;
   const isReplying =
     affectedComment &&
     affectedComment.type === "replying" &&
     affectedComment._id === comment._id;
-
   const isEditing =
     affectedComment &&
     affectedComment.type === "editing" &&
     affectedComment._id === comment._id;
   const repliedCommentId = parentId ? parentId : comment._id;
   const replyOnUserId = comment.user._id;
+
   return (
-    <div className="flex flex-nowrap items-start gap-x-3 bg-[#F2F4F5] p-3 rounded-lg ">
+    <div className="flex flex-nowrap items-start gap-x-3 bg-[#F2F4F5] p-3 rounded-lg">
       <img
-        src={images.postImage1}
-        alt="User profile"
+        src={
+          comment?.user?.avatar
+            ? stables.UPLOAD_FOLDER_BASE_URL + comment.user.avatar
+            : images.userImage
+        }
+        alt="user profile"
         className="w-9 h-9 object-cover rounded-full"
       />
       <div className="flex-1 flex flex-col">
@@ -47,20 +52,20 @@ const Comment = ({
           })}
         </span>
         {!isEditing && (
-          <p className="font-openSans mt-[10px] text-dark-light">
+          <p className="font-opensans mt-[10px] text-dark-light">
             {comment.desc}
           </p>
         )}
         {isEditing && (
           <CommentForm
-            btnLabel={"Update"}
-            formSubmitHandler={(value) => updateComment(value, comment._id)}
+            btnLabel="Update"
+            formSubmitHanlder={(value) => updateComment(value, comment._id)}
             formCancelHandler={() => setAffectedComment(null)}
             initialText={comment.desc}
           />
         )}
         <div className="flex items-center gap-x-3 text-dark-light font-roboto text-sm mt-3 mb-3">
-          {isLoggedUserId && (
+          {isUserLoggined && (
             <button
               className="flex items-center space-x-2"
               onClick={() =>
@@ -94,8 +99,8 @@ const Comment = ({
         </div>
         {isReplying && (
           <CommentForm
-            btnLabel={"Reply"}
-            formSubmitHandler={(value) =>
+            btnLabel="Reply"
+            formSubmitHanlder={(value) =>
               addComment(value, repliedCommentId, replyOnUserId)
             }
             formCancelHandler={() => setAffectedComment(null)}
